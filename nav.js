@@ -40,6 +40,11 @@ navItems.forEach(item => {
                 navItems.forEach(nav => nav.classList.remove('active'));
                 item.classList.add('active');
 
+                // Update page title
+                if (window.updatePageTitle) {
+                    window.updatePageTitle(targetPage);
+                }
+
                 // Show/hide email based on page
                 if (targetPage === 'about' || targetPage === 'contact') {
                     document.body.classList.add('no-scroll');
@@ -83,6 +88,11 @@ navItems.forEach(item => {
                 navItems.forEach(nav => nav.classList.remove('active'));
                 item.classList.add('active');
 
+                // Update page title
+                if (window.updatePageTitle) {
+                    window.updatePageTitle(targetPage);
+                }
+
                 document.body.classList.remove('no-scroll');
 
                 // Clean up animation class after it completes
@@ -108,6 +118,11 @@ navItems.forEach(item => {
                 // Update nav active state
                 navItems.forEach(nav => nav.classList.remove('active'));
                 item.classList.add('active');
+
+                // Update page title
+                if (window.updatePageTitle) {
+                    window.updatePageTitle(targetPage);
+                }
 
                 document.body.classList.add('no-scroll');
 

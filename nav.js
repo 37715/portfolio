@@ -41,14 +41,12 @@ navItems.forEach(item => {
                 item.classList.add('active');
 
                 // Show/hide email based on page
-                if (targetPage === 'about') {
+                if (targetPage === 'about' || targetPage === 'contact') {
                     document.body.classList.add('no-scroll');
                     // Trigger animation
                     targetPageEl.classList.remove('animate-in');
                     void targetPageEl.offsetWidth;
                     targetPageEl.classList.add('animate-in');
-                } else if (targetPage === 'contact') {
-                    document.body.classList.add('no-scroll');
                 } else {
                     document.body.classList.remove('no-scroll');
                 }

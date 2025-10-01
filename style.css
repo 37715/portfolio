@@ -444,7 +444,7 @@ body.no-scroll .page-container {
     position: relative !important;
 }
 
-.contact-page.active,
+.about-page.active,
 .contact-page.active {
     position: fixed !important;
     top: 0 !important;
@@ -742,3 +742,4 @@ body.no-scroll .page-container {
         display: none;
     }
 }
+/* v2 */

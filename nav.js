@@ -27,6 +27,11 @@ navItems.forEach(item => {
         const leavingWorks = currentPage === 'works';
 
         if (leavingWorks) {
+            // Disable GSAP scroll when leaving Works page
+            if (window.disableGSAPScroll) {
+                window.disableGSAPScroll();
+            }
+
             // Leaving works - slide out to right
             currentPageEl.classList.add('slide-out-right');
 
@@ -81,6 +86,11 @@ navItems.forEach(item => {
                 // Reset scroll and menu position
                 if (window.resetToFirstProject) {
                     window.resetToFirstProject();
+                }
+
+                // Re-enable GSAP scroll when returning to Works page
+                if (window.enableGSAPScroll) {
+                    window.enableGSAPScroll();
                 }
 
                 currentPage = targetPage;

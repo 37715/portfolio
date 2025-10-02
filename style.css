@@ -45,6 +45,11 @@ body.no-scroll {
     width: 100%;
 }
 
+.works-page.active {
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+}
+
 /* Hide default scrollbar */
 ::-webkit-scrollbar {
     width: 0;
@@ -141,7 +146,7 @@ nav {
 
 .page-container {
     position: relative;
-    margin-top: 250px;
+    margin-top: 150px;
     height: 100%;
 }
 
@@ -157,7 +162,7 @@ body.no-scroll .page-container {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    min-height: 100%;
     opacity: 0;
     pointer-events: none;
     transition: none;
@@ -168,6 +173,7 @@ body.no-scroll .page-container {
     opacity: 1;
     pointer-events: auto;
     visibility: visible;
+    position: relative;
 }
 
 .about-page.active,
@@ -185,53 +191,69 @@ body.no-scroll .page-container {
     transition: none;
 }
 
-/* Slide animations */
-.page.slide-out-right .project-menu {
-    background: transparent;
-    backdrop-filter: none;
-}
-
-.page.slide-out-right .gallery-item {
+/* Slide animations for FX grid */
+.page.slide-out-right .fx-image-item {
     animation: slideOutDown 0.5s ease forwards;
 }
 
-.page.slide-out-right .project-description {
+.page.slide-out-right .fx-description {
     animation: slideOutDown 0.5s ease forwards;
+    animation-delay: 0.1s;
 }
 
-.page.slide-out-right .project-item:nth-child(1) {
+.page.slide-out-right .fx-left-item:nth-child(1) {
     animation: slideOutRight 0.4s ease forwards;
     animation-delay: 0.5s;
 }
 
-.page.slide-out-right .project-item:nth-child(2) {
+.page.slide-out-right .fx-left-item:nth-child(2) {
     animation: slideOutRight 0.5s ease forwards;
     animation-delay: 0.55s;
 }
 
-.page.slide-out-right .project-item:nth-child(3) {
+.page.slide-out-right .fx-left-item:nth-child(3) {
     animation: slideOutRight 0.6s ease forwards;
     animation-delay: 0.6s;
 }
 
-.page.slide-out-right .project-item:nth-child(4) {
+.page.slide-out-right .fx-left-item:nth-child(4) {
     animation: slideOutRight 0.7s ease forwards;
     animation-delay: 0.65s;
 }
 
-.page.slide-out-right .project-item:nth-child(5) {
+.page.slide-out-right .fx-left-item:nth-child(5) {
     animation: slideOutRight 0.8s ease forwards;
     animation-delay: 0.7s;
 }
 
-.page.slide-out-right .creator-name {
-    animation: slideOutRight 0.5s ease forwards;
-    animation-delay: 0.75s;
-}
-
-.page.slide-out-right .arrow-indicator {
+.page.slide-out-right .fx-right-item:nth-child(1) {
     animation: slideOutRight 0.4s ease forwards;
     animation-delay: 0.5s;
+}
+
+.page.slide-out-right .fx-right-item:nth-child(2) {
+    animation: slideOutRight 0.5s ease forwards;
+    animation-delay: 0.55s;
+}
+
+.page.slide-out-right .fx-right-item:nth-child(3) {
+    animation: slideOutRight 0.6s ease forwards;
+    animation-delay: 0.6s;
+}
+
+.page.slide-out-right .fx-right-item:nth-child(4) {
+    animation: slideOutRight 0.7s ease forwards;
+    animation-delay: 0.65s;
+}
+
+.page.slide-out-right .fx-right-item:nth-child(5) {
+    animation: slideOutRight 0.8s ease forwards;
+    animation-delay: 0.7s;
+}
+
+.page.slide-out-right .fx-progress-wrapper {
+    animation: slideOutDown 0.4s ease forwards;
+    animation-delay: 0.3s;
 }
 
 @keyframes slideOutRight {
@@ -270,59 +292,75 @@ body.no-scroll .page-container {
     }
 }
 
-/* Slide in from right animations */
-.page.slide-in-from-right .project-item {
+/* Slide in from right animations for FX grid */
+.page.slide-in-from-right .fx-left-item,
+.page.slide-in-from-right .fx-right-item {
     animation-fill-mode: both;
 }
 
-.page.slide-in-from-right .project-item:nth-child(1) {
+.page.slide-in-from-right .fx-left-item:nth-child(1) {
     animation: slideInFromRight 0.8s ease both;
     animation-delay: 1.3s;
 }
 
-.page.slide-in-from-right .project-item:nth-child(2) {
+.page.slide-in-from-right .fx-left-item:nth-child(2) {
     animation: slideInFromRight 0.7s ease both;
     animation-delay: 1.25s;
 }
 
-.page.slide-in-from-right .project-item:nth-child(3) {
+.page.slide-in-from-right .fx-left-item:nth-child(3) {
     animation: slideInFromRight 0.6s ease both;
     animation-delay: 1.2s;
 }
 
-.page.slide-in-from-right .project-item:nth-child(4) {
+.page.slide-in-from-right .fx-left-item:nth-child(4) {
     animation: slideInFromRight 0.5s ease both;
     animation-delay: 1.15s;
 }
 
-.page.slide-in-from-right .project-item:nth-child(5) {
+.page.slide-in-from-right .fx-left-item:nth-child(5) {
     animation: slideInFromRight 0.4s ease both;
     animation-delay: 1.1s;
 }
 
-.page.slide-in-from-right .creator-name {
+.page.slide-in-from-right .fx-right-item:nth-child(1) {
+    animation: slideInFromRight 0.8s ease both;
+    animation-delay: 1.3s;
+}
+
+.page.slide-in-from-right .fx-right-item:nth-child(2) {
+    animation: slideInFromRight 0.7s ease both;
+    animation-delay: 1.25s;
+}
+
+.page.slide-in-from-right .fx-right-item:nth-child(3) {
+    animation: slideInFromRight 0.6s ease both;
+    animation-delay: 1.2s;
+}
+
+.page.slide-in-from-right .fx-right-item:nth-child(4) {
     animation: slideInFromRight 0.5s ease both;
-    animation-delay: 1.1s;
+    animation-delay: 1.15s;
 }
 
-.page.slide-in-from-right .arrow-indicator {
+.page.slide-in-from-right .fx-right-item:nth-child(5) {
     animation: slideInFromRight 0.4s ease both;
     animation-delay: 1.1s;
 }
 
-.page.slide-in-from-right .gallery-item {
+.page.slide-in-from-right .fx-image-item {
     animation: slideInFromBottom 0.5s ease both;
     animation-delay: 1.1s;
 }
 
-.page.slide-in-from-right .project-description {
+.page.slide-in-from-right .fx-description {
     animation: slideInFromBottom 0.5s ease both;
-    animation-delay: 1.1s;
+    animation-delay: 1.2s;
 }
 
-.page.slide-in-from-right .project-menu {
-    background: transparent;
-    backdrop-filter: none;
+.page.slide-in-from-right .fx-progress-wrapper {
+    animation: slideInFromBottom 0.4s ease both;
+    animation-delay: 1.3s;
 }
 
 @keyframes slideInFromRight {
@@ -379,9 +417,14 @@ body.no-scroll .page-container {
     animation-delay: 0.5s !important;
 }
 
-.about-page.animate-in .copyright-text {
+.about-page.animate-in .social-links {
     animation: slideUpFromLine 1s ease-out forwards !important;
     animation-delay: 0.65s !important;
+}
+
+.about-page.animate-in .copyright-text {
+    animation: slideUpFromLine 1s ease-out forwards !important;
+    animation-delay: 0.8s !important;
 }
 
 .about-content {
@@ -414,6 +457,40 @@ body.no-scroll .page-container {
     display: block;
     opacity: 0;
     transform: translateY(2em);
+}
+
+.social-links {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2.5rem;
+    opacity: 0;
+    transform: translateY(2em);
+}
+
+.social-link {
+    font-size: 1rem;
+    color: #000;
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+    transition: opacity 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.social-link::after {
+    content: '↗';
+    font-size: 0.9rem;
+    transition: transform 0.3s ease;
+}
+
+.social-link:hover {
+    opacity: 0.6;
+}
+
+.social-link:hover::after {
+    transform: translate(3px, -3px);
 }
 
 .about-footer {
@@ -460,6 +537,7 @@ body.no-scroll .page-container {
 
 .about-page.animate-out .about-name,
 .about-page.animate-out .bio-line,
+.about-page.animate-out .social-links,
 .about-page.animate-out .copyright-text {
     opacity: 1;
     transform: translateY(0);
@@ -484,9 +562,14 @@ body.no-scroll .page-container {
     animation-delay: 0.1s !important;
 }
 
-.about-page.animate-out .copyright-text {
+.about-page.animate-out .social-links {
     animation: slideDownToLine 0.6s ease-in forwards !important;
     animation-delay: 0.15s !important;
+}
+
+.about-page.animate-out .copyright-text {
+    animation: slideDownToLine 0.6s ease-in forwards !important;
+    animation-delay: 0.2s !important;
 }
 
 /* Contact page styling */
@@ -660,6 +743,7 @@ body.no-scroll .page-container {
     align-items: flex-start;
     flex-wrap: nowrap;
     margin-top: -5vh;
+    will-change: transform;
 }
 
 .gallery-item {
@@ -720,6 +804,8 @@ body.no-scroll .page-container {
     justify-content: flex-start;
     padding-top: 22vh;
     position: relative;
+    opacity: 1;
+    transition: opacity 0.4s ease;
 }
 
 .project-description {
@@ -774,12 +860,13 @@ body.no-scroll .page-container {
     height: auto;
     object-fit: contain;
     display: block;
-    transition: transform 0.1s ease;
+    transition: transform 0.3s ease;
+    will-change: transform;
 }
 
 .gallery-item img:hover,
 .gallery-item video:hover {
-    transform: scale(1.02);
+    transform: scale(1.03);
 }
 
 .placeholder-image {
@@ -799,8 +886,8 @@ body.no-scroll .page-container {
 }
 
 
-/* Responsive Design - use mobile layout until truly desktop size */
-@media (max-width: 1699px) {
+/* Responsive Design - use mobile layout for tablets and phones */
+@media (max-width: 1024px) {
     /* Header and Navigation */
     header {
         padding: 1.5rem;
@@ -881,13 +968,15 @@ body.no-scroll .page-container {
     .project-list {
         display: flex;
         flex-direction: column;
-        gap: 0.5rem;
+        gap: 0 !important;
         align-items: flex-end;
     }
 
     .project-item {
-        padding: 0.3rem 0;
-        margin: 0;
+        padding: 0 !important;
+        margin: 0 !important;
+        margin-bottom: 0 !important;
+        line-height: 1.2;
         text-align: right;
     }
 
@@ -1016,41 +1105,7 @@ body.no-scroll .page-container {
     letter-spacing: -0.03em;
 }
 
-/* Safe-area support for mobile menu */
-@media (max-width: 1399px) {
-    .project-menu {
-        position: fixed;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        padding-bottom: var(--safe-bottom);
-    }
-}
 
-/* Fluid gallery image sizing */
-@media (max-width: 1399px) {
-    .gallery-item:nth-child(1),
-    .gallery-item:nth-child(2),
-    .gallery-item:nth-child(3),
-    .gallery-item:nth-child(4),
-    .gallery-item:nth-child(5),
-    .gallery-item:nth-child(6) {
-        width: 100% !important;
-        max-width: min(450px, 90vw);
-    }
-}
-
-/* Fluid project description */
-@media (max-width: 1399px) {
-    .project-description {
-        position: relative;
-        width: 100%;
-        max-width: min(450px, 90vw);
-        right: auto;
-        top: auto;
-        margin: var(--space-fluid-md) auto 0;
-    }
-}
 
 /* Better image handling */
 .gallery-item img,
@@ -1182,5 +1237,355 @@ body {
 @media (max-width: 1399px) {
     .scroll-indicator {
         width: 4px;
+    }
+}
+
+/* ============================================ */
+/* MASTER RESPONSIVE DESIGN - ALL PAGES */
+/* ============================================ */
+
+/* Navigation - Desktop Large (1920px+) - Keep original positioning */
+@media (min-width: 1920px) {
+    header {
+        /* No changes - keep original top left positioning */
+    }
+}
+
+/* Navigation - Standard Desktop (1440px - 1919px) */
+@media (max-width: 1919px) and (min-width: 1440px) {
+    header {
+        padding: 1.8rem 2.5rem;
+    }
+
+    .nav-item {
+        font-size: 1.4rem;
+    }
+
+    .nav-item.active {
+        font-size: 11rem;
+    }
+}
+
+/* Navigation - Laptop (1024px - 1439px) */
+@media (max-width: 1439px) and (min-width: 1025px) {
+    header {
+        padding: 1.5rem 2rem;
+    }
+
+    .nav-item {
+        font-size: 1.3rem;
+    }
+
+    .nav-item.active {
+        font-size: 9rem;
+    }
+
+    .page-container {
+        margin-top: 120px;
+    }
+}
+
+/* Navigation - Tablet (768px - 1024px) */
+@media (max-width: 1024px) and (min-width: 768px) {
+    header {
+        padding: 1.2rem 1.5rem;
+    }
+
+    .nav-item {
+        font-size: 1.1rem;
+    }
+
+    .nav-item.active {
+        font-size: 6rem;
+        line-height: 0.9;
+    }
+
+    .page-container {
+        margin-top: 100px;
+    }
+
+    body.no-scroll .page-container {
+        margin-top: 0;
+    }
+}
+
+/* Navigation - Mobile Landscape (481px - 767px) */
+@media (max-width: 767px) and (min-width: 481px) {
+    header {
+        padding: 1rem 1.2rem;
+    }
+
+    .nav-links {
+        gap: 0.8rem;
+    }
+
+    .nav-item {
+        font-size: 0.95rem;
+    }
+
+    .nav-item.active {
+        font-size: 4rem;
+        line-height: 0.95;
+    }
+
+    .page-container {
+        margin-top: 80px;
+    }
+
+    body.no-scroll .page-container {
+        margin-top: 0;
+    }
+}
+
+/* Navigation - Mobile Portrait (320px - 480px) */
+@media (max-width: 480px) {
+    header {
+        padding: 0.8rem 1rem;
+    }
+
+    .nav-links {
+        gap: 0.6rem;
+        flex-wrap: wrap;
+    }
+
+    .nav-item {
+        font-size: 0.85rem;
+    }
+
+    .nav-item.active {
+        font-size: 3rem;
+        line-height: 1;
+        letter-spacing: -0.02em;
+    }
+
+    .page-container {
+        margin-top: 70px;
+    }
+
+    body.no-scroll .page-container {
+        margin-top: 0;
+    }
+}
+
+/* About Page - Tablet (768px - 1024px) */
+@media (max-width: 1024px) and (min-width: 768px) {
+    .about-content {
+        max-width: 550px !important;
+        padding: 1.5rem !important;
+    }
+
+    .about-content .about-name {
+        font-size: 1.1rem;
+        margin-bottom: 1.2rem;
+    }
+
+    .about-content .bio-text {
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+
+    .about-footer {
+        bottom: 1.5rem;
+        right: 1.5rem;
+    }
+
+    .copyright-text {
+        font-size: 0.95rem;
+    }
+}
+
+/* About Page - Mobile (481px - 767px) */
+@media (max-width: 767px) and (min-width: 481px) {
+    .about-content {
+        max-width: 90% !important;
+        padding: 1.2rem !important;
+    }
+
+    .about-content .about-name {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .about-content .bio-text {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    .about-footer {
+        bottom: 1.2rem;
+        right: 1.2rem;
+    }
+
+    .copyright-text {
+        font-size: 0.9rem;
+    }
+}
+
+/* About Page - Small Mobile (320px - 480px) */
+@media (max-width: 480px) {
+    .about-content {
+        max-width: 95% !important;
+        padding: 1rem !important;
+    }
+
+    .about-content .about-name {
+        font-size: 0.95rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .about-content .bio-text {
+        font-size: 0.85rem;
+        line-height: 1.4;
+    }
+
+    .about-footer {
+        bottom: 1rem;
+        right: 1rem;
+    }
+
+    .copyright-text {
+        font-size: 0.85rem;
+    }
+}
+
+/* Contact Page - Tablet (768px - 1024px) */
+@media (max-width: 1024px) and (min-width: 768px) {
+    .contact-content {
+        max-width: 550px !important;
+        padding: 1.5rem !important;
+    }
+
+    .contact-content .contact-email {
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+
+    .contact-footer {
+        bottom: 1.5rem;
+        right: 1.5rem;
+    }
+
+    .contact-copyright {
+        font-size: 0.95rem;
+    }
+}
+
+/* Contact Page - Mobile (481px - 767px) */
+@media (max-width: 767px) and (min-width: 481px) {
+    .contact-content {
+        max-width: 90% !important;
+        padding: 1.2rem !important;
+    }
+
+    .contact-content .contact-email {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    .contact-footer {
+        bottom: 1.2rem;
+        right: 1.2rem;
+    }
+
+    .contact-copyright {
+        font-size: 0.9rem;
+    }
+}
+
+/* Contact Page - Small Mobile (320px - 480px) */
+@media (max-width: 480px) {
+    .contact-content {
+        max-width: 95% !important;
+        padding: 1rem !important;
+    }
+
+    .contact-content .contact-email {
+        font-size: 0.85rem;
+        line-height: 1.4;
+    }
+
+    .contact-footer {
+        bottom: 1rem;
+        right: 1rem;
+    }
+
+    .contact-copyright {
+        font-size: 0.85rem;
+    }
+}
+
+/* Extra Small Devices (< 320px) */
+@media (max-width: 319px) {
+    header {
+        padding: 0.6rem 0.8rem;
+    }
+
+    .nav-item {
+        font-size: 0.75rem;
+    }
+
+    .nav-item.active {
+        font-size: 2.5rem;
+    }
+
+    .about-content .about-name,
+    .contact-content .contact-email {
+        font-size: 0.8rem;
+    }
+
+    .about-content .bio-text {
+        font-size: 0.8rem;
+    }
+
+    .copyright-text,
+    .contact-copyright {
+        font-size: 0.8rem;
+    }
+}
+
+/* Touch-friendly adjustments for mobile */
+@media (hover: none) and (pointer: coarse) {
+    .nav-item,
+    .fx-left-item,
+    .fx-right-item {
+        padding: 0.5rem;
+        margin: -0.5rem;
+    }
+
+    .nav-item.active {
+        padding: 0;
+        margin: 0;
+    }
+}
+
+/* High DPI screen optimization */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .fx-image-item img,
+    .fx-image-item video {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* Landscape orientation adjustments for mobile */
+@media (max-width: 767px) and (orientation: landscape) {
+    .fx-scroll-sections {
+        top: 10vh;
+    }
+
+    .fx-grid {
+        padding-top: 0.5vh;
+    }
+
+    .fx-progress-wrapper {
+        bottom: 1vh;
+    }
+
+    header {
+        padding: 0.8rem 1rem;
+    }
+
+    .nav-item.active {
+        font-size: 2.5rem;
     }
 }

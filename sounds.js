@@ -53,7 +53,7 @@ document.addEventListener('click', () => {
 });
 
 // Play hover sound on clickable elements
-const clickableElements = 'a, button, [role="button"], .project-item, .nav-item';
+const clickableElements = 'a, button, [role="button"], .project-item, .nav-item, .fx-left-item, .fx-right-item, .social-link';
 
 // Track which element is currently hovered to prevent repeated plays
 let currentHoveredElement = null;

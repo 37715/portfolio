@@ -1,11 +1,11 @@
-// Custom scroll snapping for project sections
+// Custom scroll snapping for FX sections
 let isSnapping = false;
 let snapTimeout;
 
 // Wait for DOM to be ready
 setTimeout(() => {
-    const projectSections = document.querySelectorAll('.project-section');
-    const projectItems = document.querySelectorAll('.project-item');
+    const projectSections = document.querySelectorAll('.fx-image-section');
+    const projectItems = document.querySelectorAll('.fx-left-item');
 
     // Function to update active menu item
     function updateActiveMenuItem(sectionIndex) {
@@ -16,57 +16,52 @@ setTimeout(() => {
                 item.classList.remove('active');
             }
         });
-
-        // Update arrow position
-        if (window.updateArrowPosition) {
-            window.updateArrowPosition(sectionIndex);
-        }
     }
 
     window.addEventListener('wheel', (e) => {
+        // Only work on works page
+        const worksPage = document.querySelector('.works-page');
+        if (!worksPage || !worksPage.classList.contains('active')) return;
+
+        // Disable on mobile
+        if (window.innerWidth <= 1024) return;
+
         e.preventDefault();
 
         if (isSnapping) return;
 
-        // Get current scroll position
+        // Get pinned section bounds
+        const pinnedSection = document.querySelector('.fx-pinned-section');
+        if (!pinnedSection) return;
+
+        const sectionHeight = pinnedSection.offsetHeight;
+        const sectionTop = pinnedSection.offsetTop;
         const currentScroll = window.pageYOffset;
 
-        // Find which section we should snap to
-        let targetSection = null;
+        // Calculate target section based on scroll within pinned area
+        const scrollInSection = currentScroll - sectionTop;
+        const currentIndex = Math.floor((scrollInSection / sectionHeight) * projectSections.length);
+
         let targetIndex = -1;
 
         if (e.deltaY > 0) {
-            // Scrolling down - find next section
-            for (let i = 0; i < projectSections.length; i++) {
-                const section = projectSections[i];
-                const sectionTop = section.offsetTop;
-                if (sectionTop > currentScroll + 10) {
-                    targetSection = section;
-                    targetIndex = i;
-                    break;
-                }
-            }
+            // Scrolling down
+            targetIndex = Math.min(currentIndex + 1, projectSections.length - 1);
         } else {
-            // Scrolling up - find previous section
-            for (let i = projectSections.length - 1; i >= 0; i--) {
-                const section = projectSections[i];
-                const sectionTop = section.offsetTop;
-                if (sectionTop < currentScroll - 10) {
-                    targetSection = section;
-                    targetIndex = i;
-                    break;
-                }
-            }
+            // Scrolling up
+            targetIndex = Math.max(currentIndex - 1, 0);
         }
 
-        if (targetSection && targetIndex !== -1) {
+        if (targetIndex !== -1 && targetIndex !== currentIndex) {
             isSnapping = true;
 
-            // Custom smooth scroll with slower animation
+            // Calculate target scroll position
+            const targetScroll = sectionTop + (sectionHeight / projectSections.length) * targetIndex;
+
+            // Custom smooth scroll
             const start = window.pageYOffset;
-            const target = targetSection.offsetTop;
-            const distance = target - start;
-            const duration = 1000; // milliseconds
+            const distance = targetScroll - start;
+            const duration = 800;
             const startTime = performance.now();
 
             function easeOutCubic(t) {
@@ -94,7 +89,7 @@ setTimeout(() => {
             clearTimeout(snapTimeout);
             snapTimeout = setTimeout(() => {
                 isSnapping = false;
-            }, 1000);
+            }, 900);
         }
     }, { passive: false });
 }, 100);

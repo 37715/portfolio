@@ -7,6 +7,7 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="loader.css">
+    <link rel="stylesheet" href="fx-scroll.css">
 </head>
 <body>
     <div class="scroll-indicator"></div>
@@ -24,114 +25,171 @@
 
         <!-- Works Page -->
         <div class="page works-page active" data-page="works">
-            <div class="project-menu">
-            <div class="menu-wrapper">
-                <div class="arrow-indicator">◀</div>
-                <ul class="project-list">
-                    <li class="project-item active" data-project="0">
-                        <span>RETROCYCLES</span>
-                    </li>
-                    <li class="project-item" data-project="1">
-                        <span>TYPRR</span>
-                    </li>
-                    <li class="project-item" data-project="2">
-                        <span>CLEVERLINK</span>
-                    </li>
-                    <li class="project-item" data-project="3">
-                        <span>CATHEXIS</span>
-                    </li>
-                    <li class="project-item" data-project="4">
-                        <span>GARDENESCAPES</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
+            <div class="fx-scroll-wrapper">
+                <div class="fx-pinned-section">
+                    <div class="fx-pinned-container">
 
-        <div class="projects-scroll-container">
-            <section class="project-section" data-project="0">
-                <div class="image-gallery">
-                    <div class="gallery-item gallery-item-video">
-                        <video autoplay loop muted playsinline>
-                            <source src="assets/site images/retrocycles/retrocycles video demo 1920x900.mp4" type="video/mp4">
-                        </video>
-                    </div>
-                    <div class="gallery-item"><img src="assets/site images/retrocycles/2 - main menu MOBILE.png" alt="Retrocycles Main Menu Mobile"></div>
-                    <div class="gallery-item"><img src="assets/site images/retrocycles/4 - leaderboard DESKTOP.png" alt="Retrocycles Leaderboard Desktop"></div>
-                    <div class="gallery-item"><img src="assets/site images/retrocycles/1 - main menu DESKTOP.png" alt="Retrocycles Main Menu Desktop"></div>
-                </div>
-                <div class="project-description">
-                    <p>a community archive / hub for the game <em>retrocycles</em>, featuring leaderboards, tutorials, and a gallery</p>
-                    <a href="https://retrocycles-leaderboard.vercel.app/" target="_blank" rel="noopener noreferrer" class="visit-site-btn">visit site</a>
-                </div>
-            </section>
+                        <!-- Grid Layout: Left Column | Center Title | Right Column -->
+                        <div class="fx-grid">
 
-            <section class="project-section" data-project="1">
-                <div class="image-gallery">
-                    <div class="gallery-item gallery-item-video">
-                        <video autoplay loop muted playsinline>
-                            <source src="assets/site images/typrr/video 1 (put this on the left side).mp4" type="video/mp4">
-                        </video>
-                    </div>
-                    <div class="gallery-item"><img src="assets/site images/typrr/2 - mobile daily.png" alt="Typrr Mobile Daily"></div>
-                    <div class="gallery-item"><img src="assets/site images/typrr/1 - desktop image profile picture.png" alt="Typrr Desktop Profile"></div>
-                    <div class="gallery-item"><img src="assets/site images/typrr/1 - desktop image daily.png" alt="Typrr Desktop Daily"></div>
-                </div>
-                <div class="project-description">
-                    <p>a competitive typing platform built around speed and precision for developers and code enthusiasts.</p>
-                    <a href="https://www.typrr.dev/" target="_blank" rel="noopener noreferrer" class="visit-site-btn">visit site</a>
-                </div>
-            </section>
+                            <!-- Left Column - Project Menu -->
+                            <div class="fx-left-column">
+                                <div class="fx-left-track">
+                                    <div class="fx-left-item active" data-index="0">
+                                        <span>01 — RETROCYCLES</span>
+                                    </div>
+                                    <div class="fx-left-item" data-index="1">
+                                        <span>02 — TYPRR</span>
+                                    </div>
+                                    <div class="fx-left-item" data-index="2">
+                                        <span>03 — CLEVERLINK</span>
+                                    </div>
+                                    <div class="fx-left-item" data-index="3">
+                                        <span>04 — CATHEXIS</span>
+                                    </div>
+                                    <div class="fx-left-item" data-index="4">
+                                        <span>05 — GARDENESCAPES</span>
+                                    </div>
+                                </div>
+                            </div>
 
-            <section class="project-section" data-project="2">
-                <div class="image-gallery">
-                    <div class="gallery-item gallery-item-video">
-                        <video autoplay loop muted playsinline>
-                            <source src="assets/site images/cleverlink/ai robot video 1920x900.mp4" type="video/mp4">
-                        </video>
-                    </div>
-                    <div class="gallery-item"><img src="assets/site images/cleverlink/3 - MOBILE solutions.png" alt="Cleverlink Mobile Solutions"></div>
-                    <div class="gallery-item"><img src="assets/site images/cleverlink/2 - benefits page.png" alt="Cleverlink Benefits Page"></div>
-                    <div class="gallery-item"><img src="assets/site images/cleverlink/1 - landing page.png" alt="Cleverlink Landing Page"></div>
-                </div>
-                <div class="project-description">
-                    <p>an ai driven automation agency helping small businesses to modernize.</p>
-                    <a href="https://cleverlink.uk/" target="_blank" rel="noopener noreferrer" class="visit-site-btn">visit site</a>
-                </div>
-            </section>
+                            <!-- Center - Empty -->
+                            <div class="fx-center-column"></div>
 
-            <section class="project-section" data-project="3">
-                <div class="image-gallery">
-                    <div class="gallery-item gallery-item-video">
-                        <video autoplay loop muted playsinline>
-                            <source src="assets/site images/cathexis/gameplay video.mp4" type="video/mp4">
-                        </video>
-                    </div>
-                    <div class="gallery-item gallery-item-video">
-                        <video autoplay loop muted playsinline>
-                            <source src="assets/site images/cathexis/bike picker.mp4" type="video/mp4">
-                        </video>
-                    </div>
-                    <div class="gallery-item"><img src="assets/site images/cathexis/key binds.png" alt="Cathexis Key Binds"></div>
-                    <div class="gallery-item"><img src="assets/site images/cathexis/main menu.png" alt="Cathexis Main Menu"></div>
-                </div>
-                <div class="project-description">
-                    <p>a 3d tron-inspired lightcycle game exploring skill-based mechanics utilising webGL and threejs</p>
-                    <a href="https://cathexis.netlify.app/" target="_blank" rel="noopener noreferrer" class="visit-site-btn">visit site</a>
-                </div>
-            </section>
+                            <!-- Right Column - Visit Links -->
+                            <div class="fx-right-column">
+                                <div class="fx-right-track">
+                                    <div class="fx-right-item active" data-index="0">
+                                        <a href="https://retrocycles-leaderboard.vercel.app/" target="_blank">visit</a>
+                                    </div>
+                                    <div class="fx-right-item" data-index="1">
+                                        <a href="https://www.typrr.dev/" target="_blank">visit</a>
+                                    </div>
+                                    <div class="fx-right-item" data-index="2">
+                                        <a href="https://cleverlink.uk/" target="_blank">visit</a>
+                                    </div>
+                                    <div class="fx-right-item" data-index="3">
+                                        <a href="https://cathexis.netlify.app/" target="_blank">visit</a>
+                                    </div>
+                                    <div class="fx-right-item" data-index="4">
+                                        <a href="https://gardenescapes.netlify.app/" target="_blank">visit</a>
+                                    </div>
+                                </div>
+                            </div>
 
-            <section class="project-section" data-project="4">
-                <div class="image-gallery">
-                    <div class="gallery-item"><img src="assets/site images/gardenescapes/landing page.png" alt="Gardenescapes Landing Page"></div>
-                    <div class="gallery-item"><img src="assets/site images/gardenescapes/services page.png" alt="Gardenescapes Services Page"></div>
-                    <div class="gallery-item"><img src="assets/site images/gardenescapes/portfolio page.png" alt="Gardenescapes Portfolio Page"></div>
-                    <div class="gallery-item"><img src="assets/site images/gardenescapes/contact page.png" alt="Gardenescapes Contact Page"></div>
+                        </div>
+
+                        <!-- Progress Indicator -->
+                        <div class="fx-progress-wrapper">
+                            <div class="fx-progress-numbers">
+                                <span class="fx-current">01</span>
+                                <span class="fx-total">05</span>
+                            </div>
+                            <div class="fx-progress-bar">
+                                <div class="fx-progress-fill"></div>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
-                <div class="project-description">
-                    <p>a local landscaping and maintenance brand, digitized through modern web presence.</p>
-                    <a href="https://gardenescapes.netlify.app/" target="_blank" rel="noopener noreferrer" class="visit-site-btn">visit site</a>
+
+                <!-- Scrollable Images Section -->
+                <div class="fx-scroll-sections">
+
+                    <!-- Retrocycles -->
+                    <section class="fx-image-section" data-index="0">
+                        <div class="fx-images-grid">
+                            <div class="fx-image-item">
+                                <video autoplay loop muted playsinline>
+                                    <source src="assets/site images/retrocycles/retrocycles video demo 1920x900.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                            <div class="fx-image-item">
+                                <img src="assets/site images/retrocycles/2 - main menu MOBILE.png" alt="Retrocycles Mobile">
+                            </div>
+                            <div class="fx-image-item">
+                                <img src="assets/site images/retrocycles/4 - leaderboard DESKTOP.png" alt="Retrocycles Desktop">
+                            </div>
+                        </div>
+                        <p class="fx-description">a community archive / hub for the game retrocycles, featuring leaderboards, tutorials, and a gallery</p>
+                    </section>
+
+                    <!-- Typrr -->
+                    <section class="fx-image-section" data-index="1">
+                        <div class="fx-images-grid">
+                            <div class="fx-image-item">
+                                <video autoplay loop muted playsinline>
+                                    <source src="assets/site images/typrr/video 1 (put this on the left side).mp4" type="video/mp4">
+                                </video>
+                            </div>
+                            <div class="fx-image-item">
+                                <img src="assets/site images/typrr/2 - mobile daily.png" alt="Typrr Mobile">
+                            </div>
+                            <div class="fx-image-item">
+                                <img src="assets/site images/typrr/1 - desktop image daily.png" alt="Typrr Desktop">
+                            </div>
+                        </div>
+                        <p class="fx-description">a competitive typing platform built around speed and precision for developers and code enthusiasts</p>
+                    </section>
+
+                    <!-- Cleverlink -->
+                    <section class="fx-image-section" data-index="2">
+                        <div class="fx-images-grid">
+                            <div class="fx-image-item">
+                                <video autoplay loop muted playsinline>
+                                    <source src="assets/site images/cleverlink/ai robot video 1920x900.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                            <div class="fx-image-item">
+                                <img src="assets/site images/cleverlink/3 - MOBILE solutions.png" alt="Cleverlink Mobile">
+                            </div>
+                            <div class="fx-image-item">
+                                <img src="assets/site images/cleverlink/2 - benefits page.png" alt="Cleverlink Desktop">
+                            </div>
+                        </div>
+                        <p class="fx-description">an ai driven automation agency helping small businesses to modernize</p>
+                    </section>
+
+                    <!-- Cathexis -->
+                    <section class="fx-image-section" data-index="3">
+                        <div class="fx-images-grid">
+                            <div class="fx-image-item">
+                                <video autoplay loop muted playsinline>
+                                    <source src="assets/site images/cathexis/gameplay video.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                            <div class="fx-image-item">
+                                <video autoplay loop muted playsinline>
+                                    <source src="assets/site images/cathexis/bike picker.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                            <div class="fx-image-item">
+                                <img src="assets/site images/cathexis/main menu.png" alt="Cathexis Menu">
+                            </div>
+                        </div>
+                        <p class="fx-description">a 3d tron-inspired lightcycle game exploring skill-based mechanics utilising webGL and threejs</p>
+                    </section>
+
+                    <!-- Gardenescapes -->
+                    <section class="fx-image-section" data-index="4">
+                        <div class="fx-images-grid">
+                            <div class="fx-image-item">
+                                <img src="assets/site images/gardenescapes/landing page.png" alt="Gardenescapes Landing">
+                            </div>
+                            <div class="fx-image-item">
+                                <img src="assets/site images/gardenescapes/services page.png" alt="Gardenescapes Services">
+                            </div>
+                            <div class="fx-image-item">
+                                <img src="assets/site images/gardenescapes/portfolio page.png" alt="Gardenescapes Portfolio">
+                            </div>
+                        </div>
+                        <p class="fx-description">a local landscaping and maintenance brand, digitized through modern web presence</p>
+                    </section>
+
                 </div>
-            </section>
+
+                <!-- End Spacer -->
+                <div class="fx-end-spacer"></div>
 
             </div>
         </div>
@@ -144,6 +202,10 @@
                     <span class="bio-line">creative developer focused on animations and user interactions,</span>
                     <span class="bio-line">to create immersive online experiences.</span>
                     <span class="bio-line">based in the uk.</span>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/ellis-wheeler-49671a180/" target="_blank" rel="noopener noreferrer" class="social-link">linkedin</a>
+                    <a href="https://github.com/37715" target="_blank" rel="noopener noreferrer" class="social-link">github</a>
                 </div>
             </div>
             <div class="about-footer">
@@ -163,12 +225,17 @@
 
     </main>
 
+    <!-- GSAP Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
     <script src="loader.js"></script>
     <script src="update-title.js"></script>
     <script src="sounds.js"></script>
     <script src="nav.js"></script>
     <script src="script.js"></script>
-    <script src="scroll-snap.js"></script>
     <script src="scroll-indicator.js"></script>
+    <script src="gsap-scroll.js"></script>
+    <script src="scroll-snap.js"></script>
 </body>
 </html>

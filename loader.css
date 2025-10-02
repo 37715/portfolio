@@ -5,7 +5,7 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: #fff;
+    background: #f5f6f3;
     z-index: 99999;
     display: flex;
     align-items: center;
@@ -22,7 +22,7 @@
 .loader {
     font-family: 'FogtwoNo5', serif;
     font-size: 4rem;
-    color: #000;
+    color: #1a1f1a;
     animation: pulse 1.5s ease-in-out infinite;
 }
 

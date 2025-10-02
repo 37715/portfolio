@@ -32,8 +32,8 @@ html {
 
 body {
     font-family: 'Sk-Modernist', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-    background: #fff;
-    color: #000;
+    background: #f5f6f3;
+    color: #1a1f1a;
     overflow-x: hidden;
     height: 100%;
 }
@@ -104,7 +104,7 @@ nav {
 .nav-item {
     font-family: 'FogtwoNo5', serif;
     text-decoration: none;
-    color: #000;
+    color: #1a1f1a;
     font-size: 1.5rem;
     line-height: 1;
     transition: font-size 1.2s cubic-bezier(0.85, 0, 0.15, 1), line-height 1.2s cubic-bezier(0.85, 0, 0.15, 1), letter-spacing 1.2s cubic-bezier(0.85, 0, 0.15, 1), opacity 0.1s ease;
@@ -128,7 +128,7 @@ nav {
     font-family: 'FogtwoNo5', serif;
     font-size: 1.5rem;
     text-decoration: none;
-    color: #000;
+    color: #1a1f1a;
     margin-top: 0.5rem;
     opacity: 0;
     pointer-events: none;
@@ -439,7 +439,7 @@ body.no-scroll .page-container {
     font-family: 'FogtwoNo5', serif;
     font-size: 1.2rem;
     font-weight: 400;
-    color: #000;
+    color: #1a1f1a;
     margin-bottom: 1.5rem;
     opacity: 0;
     transform: translateY(2em);
@@ -448,7 +448,7 @@ body.no-scroll .page-container {
 .about-content .bio-text {
     font-size: 1rem;
     line-height: 1.6;
-    color: #000;
+    color: #1a1f1a;
     font-weight: 500;
     display: block;
 }
@@ -469,7 +469,7 @@ body.no-scroll .page-container {
 
 .social-link {
     font-size: 1rem;
-    color: #000;
+    color: #1a1f1a;
     text-decoration: none;
     font-weight: 500;
     position: relative;
@@ -503,7 +503,7 @@ body.no-scroll .page-container {
 .copyright-text {
     display: inline-block;
     font-size: 1rem;
-    color: #000;
+    color: #1a1f1a;
     font-weight: 500;
     opacity: 0;
     transform: translateY(2em);
@@ -629,7 +629,7 @@ body.no-scroll .page-container {
 .contact-content .contact-email {
     font-size: 1rem;
     line-height: 1.6;
-    color: #000;
+    color: #1a1f1a;
     font-weight: 500;
     display: block;
     opacity: 0;
@@ -646,7 +646,7 @@ body.no-scroll .page-container {
 .contact-copyright {
     display: inline-block;
     font-size: 1rem;
-    color: #000;
+    color: #1a1f1a;
     font-weight: 500;
     opacity: 0;
     transform: translateY(2em);
@@ -677,7 +677,7 @@ body.no-scroll .page-container {
     right: 0;
     top: 0;
     font-size: 0.8rem;
-    color: #000;
+    color: #1a1f1a;
     transform: translateY(0);
     transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     pointer-events: none;
@@ -710,13 +710,13 @@ body.no-scroll .page-container {
 
 .project-item.active span,
 .project-item:hover span {
-    color: #000;
+    color: #1a1f1a;
     font-weight: 575;
 }
 
 .creator-name {
     font-size: 1rem;
-    color: #000;
+    color: #1a1f1a;
     margin-top: 2rem;
 }
 
@@ -816,7 +816,7 @@ body.no-scroll .page-container {
     font-family: 'Sk-Modernist', sans-serif;
     font-size: 1rem;
     line-height: 1.6;
-    color: #000;
+    color: #1a1f1a;
     font-weight: 500;
     z-index: 10;
     background: transparent;
@@ -837,7 +837,7 @@ body.no-scroll .page-container {
     font-family: 'Sk-Modernist', sans-serif;
     font-size: 0.9rem;
     font-weight: 500;
-    color: #000;
+    color: #1a1f1a;
     text-decoration: none;
     position: relative;
     transition: transform 0.3s ease;
@@ -987,7 +987,7 @@ body.no-scroll .page-container {
     }
 
     .project-item.active span {
-        color: #000;
+        color: #1a1f1a;
     }
 
     /* Project Description - Hide on mobile */

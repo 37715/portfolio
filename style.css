@@ -77,7 +77,7 @@ header {
     top: 0;
     left: 0;
     right: 0;
-    z-index: 1000;
+    z-index: 10000;
     background: transparent;
     padding: 2rem 3rem;
 }
@@ -458,16 +458,35 @@ body.no-scroll .page-container {
     z-index: 10000 !important;
 }
 
+.about-page.animate-out .about-name,
+.about-page.animate-out .bio-line,
+.about-page.animate-out .copyright-text {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 .about-page.animate-out .about-name {
+    animation: slideDownToLine 0.6s ease-in forwards !important;
+    animation-delay: 0.3s !important;
+}
+
+.about-page.animate-out .bio-line:nth-child(1) {
     animation: slideDownToLine 0.6s ease-in forwards !important;
 }
 
-.about-page.animate-out .bio-line {
+.about-page.animate-out .bio-line:nth-child(2) {
     animation: slideDownToLine 0.6s ease-in forwards !important;
+    animation-delay: 0.05s !important;
+}
+
+.about-page.animate-out .bio-line:nth-child(3) {
+    animation: slideDownToLine 0.6s ease-in forwards !important;
+    animation-delay: 0.1s !important;
 }
 
 .about-page.animate-out .copyright-text {
     animation: slideDownToLine 0.6s ease-in forwards !important;
+    animation-delay: 0.15s !important;
 }
 
 /* Contact page styling */
@@ -501,12 +520,19 @@ body.no-scroll .page-container {
     z-index: 10000 !important;
 }
 
+.contact-page.animate-out .contact-email,
+.contact-page.animate-out .contact-copyright {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 .contact-page.animate-out .contact-email {
     animation: slideDownToLine 0.6s ease-in forwards !important;
 }
 
 .contact-page.animate-out .contact-copyright {
     animation: slideDownToLine 0.6s ease-in forwards !important;
+    animation-delay: 0.15s !important;
 }
 
 .contact-content {
@@ -711,6 +737,14 @@ body.no-scroll .page-container {
     padding: 1rem;
 }
 
+/* Only use absolute positioning at wide desktop - otherwise use mobile */
+@media (min-width: 1700px) and (max-width: 1919px) {
+    .project-description {
+        right: 10rem;
+    }
+}
+
+
 .visit-site-btn {
     display: inline-block;
     margin-top: 1.5rem;
@@ -764,25 +798,9 @@ body.no-scroll .page-container {
     background: #eee;
 }
 
-@media (max-width: 1024px) {
-    .project-menu {
-        width: 350px;
-    }
 
-    .section-title {
-        font-size: 8rem;
-    }
-
-    .section-number {
-        font-size: 2rem;
-    }
-
-    .project-item span {
-        font-size: 1rem;
-    }
-}
-
-@media (max-width: 768px) {
+/* Responsive Design - use mobile layout until truly desktop size */
+@media (max-width: 1699px) {
     /* Header and Navigation */
     header {
         padding: 1.5rem;
@@ -796,53 +814,30 @@ body.no-scroll .page-container {
         font-size: 3rem;
     }
 
-    /* Project Menu */
-    .project-menu {
-        position: fixed;
-        top: auto;
-        bottom: 2rem;
-        left: 50%;
-        transform: translateX(-50%);
-        width: auto;
-        max-width: 90%;
-        padding: 1.5rem;
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
-    }
-
-    .menu-wrapper {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .arrow-indicator {
-        display: none;
-    }
-
-    .project-list {
+    /* Project Section */
+    .project-section {
+        padding: 8rem 0 2rem 0;
+        min-height: 100vh;
         display: flex;
-        flex-direction: row;
-        gap: 1rem;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
+        justify-content: flex-start;
+        align-items: flex-start;
     }
 
-    .project-item {
-        padding-right: 0;
-        margin-bottom: 0;
-        white-space: nowrap;
-    }
-
-    .project-item span {
-        font-size: 0.85rem;
-    }
-
-    /* Gallery */
+    /* Gallery - VERTICAL STACK on FAR LEFT */
     .image-gallery {
+        display: flex;
         flex-direction: column;
-        padding: 0 1.5rem;
-        gap: 2rem;
-        margin-top: 0;
+        gap: 0.5rem;
+        padding: 0;
+        padding-left: 1rem;
+        margin: 0;
+        margin-right: auto;
+        width: 50%;
+        max-width: 200px;
+    }
+
+    .gallery-item {
+        scroll-snap-align: none;
     }
 
     .gallery-item:first-child {
@@ -856,26 +851,59 @@ body.no-scroll .page-container {
     .gallery-item:nth-child(5),
     .gallery-item:nth-child(6) {
         width: 100% !important;
+        max-width: 100%;
     }
 
     .project-section[data-project="3"] .gallery-item:nth-child(2) {
         width: 100% !important;
     }
 
-    /* Project Description */
-    .project-description {
-        position: relative;
-        width: 100%;
-        right: auto;
-        top: auto;
-        padding: 1.5rem;
-        margin-top: 2rem;
+    /* Project Menu - LOCKED FAR RIGHT */
+    .project-menu {
+        position: fixed;
+        top: 50%;
+        right: 0.5rem;
+        transform: translateY(-50%);
+        padding: 0;
+        background: transparent;
+        z-index: 100;
     }
 
-    .project-section {
-        padding: 2rem 0;
-        padding-top: 8rem;
-        min-height: auto;
+    .menu-wrapper {
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .arrow-indicator {
+        display: none;
+    }
+
+    .project-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: flex-end;
+    }
+
+    .project-item {
+        padding: 0.3rem 0;
+        margin: 0;
+        text-align: right;
+    }
+
+    .project-item span {
+        font-size: 0.75rem;
+        font-weight: 575;
+        text-transform: uppercase;
+    }
+
+    .project-item.active span {
+        color: #000;
+    }
+
+    /* Project Description - Hide on mobile */
+    .project-description {
+        display: none;
     }
 
     /* About Page */
@@ -956,3 +984,203 @@ body.no-scroll .page-container {
     }
 }
 /* v2 */
+
+/* ==========================================================================
+   RESPONSIVE IMPROVEMENTS - Fluid & Accessible Design
+   ========================================================================== */
+
+/* Fluid Design Tokens */
+:root {
+  /* Fluid typography - scales smoothly without breakpoints */
+  --text-fluid-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
+  --text-fluid-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+  --text-fluid-lg: clamp(1.125rem, 1rem + 0.625vw, 1.5rem);
+  --text-fluid-nav: clamp(3rem, 2rem + 5vw, 12rem);
+
+  /* Fluid spacing - prevents layout jumps */
+  --space-fluid-sm: clamp(0.5rem, 0.4rem + 0.5vw, 1rem);
+  --space-fluid-md: clamp(1rem, 0.75rem + 1.25vw, 2rem);
+  --space-fluid-lg: clamp(1.5rem, 1rem + 2vw, 3rem);
+  --space-fluid-xl: clamp(2rem, 1.5rem + 2.5vw, 4rem);
+
+  /* Safe area for notched devices */
+  --safe-bottom: max(2rem, env(safe-area-inset-bottom));
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+}
+
+/* Fluid navigation scaling */
+.nav-item.active {
+    font-size: var(--text-fluid-nav);
+    line-height: 0.85;
+    letter-spacing: -0.03em;
+}
+
+/* Safe-area support for mobile menu */
+@media (max-width: 1399px) {
+    .project-menu {
+        position: fixed;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        padding-bottom: var(--safe-bottom);
+    }
+}
+
+/* Fluid gallery image sizing */
+@media (max-width: 1399px) {
+    .gallery-item:nth-child(1),
+    .gallery-item:nth-child(2),
+    .gallery-item:nth-child(3),
+    .gallery-item:nth-child(4),
+    .gallery-item:nth-child(5),
+    .gallery-item:nth-child(6) {
+        width: 100% !important;
+        max-width: min(450px, 90vw);
+    }
+}
+
+/* Fluid project description */
+@media (max-width: 1399px) {
+    .project-description {
+        position: relative;
+        width: 100%;
+        max-width: min(450px, 90vw);
+        right: auto;
+        top: auto;
+        margin: var(--space-fluid-md) auto 0;
+    }
+}
+
+/* Better image handling */
+.gallery-item img,
+.gallery-item video {
+    width: 100%;
+    height: auto;
+    display: block;
+    image-rendering: -webkit-optimize-contrast;
+}
+
+/* Touch target enforcement */
+.nav-item,
+.project-item,
+.visit-site-btn {
+    min-height: 44px;
+    min-width: 44px;
+}
+
+/* Focus states for accessibility */
+:where(a, button, [role="button"]):focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 4px;
+    transition: outline-offset 0.2s ease;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Overflow protection */
+body {
+    overflow-x: hidden;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+/* Fluid project section spacing */
+@media (max-width: 1399px) {
+    .project-section {
+        padding: var(--space-fluid-md) 0;
+        padding-top: clamp(6rem, 10vh, 8rem);
+        gap: var(--space-fluid-lg);
+    }
+}
+
+/* Fluid gallery spacing */
+@media (max-width: 1399px) {
+    .image-gallery {
+        gap: var(--space-fluid-md);
+        padding: 0 var(--space-fluid-md);
+    }
+}
+
+/* Fluid menu spacing */
+@media (max-width: 1399px) {
+    .project-item span {
+        font-size: clamp(0.75rem, 0.7rem + 0.25vw, 0.85rem);
+    }
+
+    .project-menu {
+        padding: var(--space-fluid-md);
+    }
+}
+
+/* Short viewport optimization */
+@media (max-height: 600px) {
+    .page-container {
+        margin-top: clamp(8rem, 15vh, 12rem);
+    }
+
+    .project-section {
+        padding-top: 6rem;
+    }
+}
+
+/* Ultra-wide viewport constraint */
+@media (min-width: 2560px) {
+    .page-container,
+    .projects-scroll-container {
+        max-width: 1920px;
+        margin-inline: auto;
+    }
+}
+
+/* Fluid typography on mobile */
+@media (max-width: 1399px) {
+    .about-content .about-name {
+        font-size: clamp(1rem, 0.9rem + 0.5vw, 1.2rem);
+    }
+
+    .about-content .bio-text {
+        font-size: clamp(0.9rem, 0.85rem + 0.25vw, 1rem);
+    }
+
+    .contact-content .contact-email {
+        font-size: clamp(0.9rem, 0.85rem + 0.25vw, 1rem);
+    }
+}
+
+/* Container query support */
+@supports (container-type: inline-size) {
+    .projects-scroll-container {
+        container-type: inline-size;
+        container-name: gallery;
+    }
+
+    @container gallery (max-width: 1399px) {
+        .project-section {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+}
+
+/* Fluid nav gaps */
+.nav-links {
+    gap: clamp(0.5rem, 0.5rem + 0.5vw, 1rem);
+}
+
+/* Responsive scroll indicator */
+@media (max-width: 1399px) {
+    .scroll-indicator {
+        width: 4px;
+    }
+}

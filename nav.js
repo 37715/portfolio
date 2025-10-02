@@ -57,8 +57,9 @@ navItems.forEach(item => {
                 }
             }, 1500);
         } else if (goingToWorks) {
-            // Animate out the about page
+            // Animate out the about/contact page
             currentPageEl.classList.remove('animate-in');
+            void currentPageEl.offsetWidth; // Force reflow
             currentPageEl.classList.add('animate-out');
 
             // Show works page immediately but with delayed animations
@@ -99,7 +100,7 @@ navItems.forEach(item => {
                 setTimeout(() => {
                     targetPageEl.classList.remove('slide-in-from-right');
                 }, 1500);
-            }, 100);
+            }, 900);
         } else {
             // Between about and contact
             // Scroll to top first
@@ -107,6 +108,7 @@ navItems.forEach(item => {
 
             // Animate out current page
             currentPageEl.classList.remove('animate-in');
+            void currentPageEl.offsetWidth; // Force reflow
             currentPageEl.classList.add('animate-out');
 
             setTimeout(() => {
@@ -130,7 +132,7 @@ navItems.forEach(item => {
                 targetPageEl.classList.remove('animate-in');
                 void targetPageEl.offsetWidth;
                 targetPageEl.classList.add('animate-in');
-            }, 600);
+            }, 900);
         }
     });
 });

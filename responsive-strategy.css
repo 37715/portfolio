@@ -1,0 +1,346 @@
+/* ==========================================================================
+   RESPONSIVE DESIGN SYSTEM - FLUID & ADAPTIVE
+   Preserves visual hierarchy across all screen sizes without changing design
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. CUSTOM PROPERTIES - Fluid Tokens
+   -------------------------------------------------------------------------- */
+
+:root {
+  /* Fluid Typography Scale using clamp() */
+  --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+  --text-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
+  --text-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+  --text-lg: clamp(1.125rem, 1rem + 0.625vw, 1.5rem);
+  --text-xl: clamp(1.5rem, 1.2rem + 1.5vw, 2.5rem);
+  --text-2xl: clamp(2.5rem, 2rem + 2.5vw, 4rem);
+  --text-3xl: clamp(4rem, 3rem + 5vw, 8rem);
+  --text-nav-active: clamp(3rem, 2rem + 5vw, 12rem);
+
+  /* Fluid Spacing Scale (with max caps to prevent excessive spacing) */
+  --space-1: clamp(0.25rem, 0.2rem + 0.25vw, 0.5rem);
+  --space-2: clamp(0.5rem, 0.4rem + 0.5vw, 1rem);
+  --space-3: clamp(0.75rem, 0.5rem + 1vw, 1.5rem);
+  --space-4: clamp(1rem, 0.75rem + 1.25vw, 2rem);
+  --space-5: clamp(1.5rem, 1rem + 2vw, 3rem);
+  --space-6: clamp(2rem, 1.5rem + 2.5vw, 4rem);
+  --space-8: clamp(3rem, 2rem + 5vw, 6rem);
+
+  /* Container widths */
+  --container-max: 1920px;
+  --content-max: 1400px;
+  --gallery-min: 280px;
+  --card-min: clamp(180px, 40vw, 450px);
+
+  /* Touch target minimum */
+  --tap-target-min: 44px;
+
+  /* Safe area insets for notched devices */
+  --safe-area-top: env(safe-area-inset-top, 0px);
+  --safe-area-right: env(safe-area-inset-right, 0px);
+  --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-area-left: env(safe-area-inset-left, 0px);
+
+  /* Dynamic viewport units with fallbacks */
+  --vh-dynamic: 1dvh; /* Accounts for mobile address bar */
+  --vh-small: 1svh;   /* Smallest viewport */
+  --vh-large: 1lvh;   /* Largest viewport */
+}
+
+/* Fallback for browsers without dvh support */
+@supports not (height: 1dvh) {
+  :root {
+    --vh-dynamic: 1vh;
+    --vh-small: 1vh;
+    --vh-large: 1vh;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   2. BASE RESETS - Fluid & Accessible
+   -------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  /* Long word defense */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+html {
+  /* Prevent layout shift from scrollbar */
+  scrollbar-gutter: stable;
+  /* Smooth scrolling (respects reduced-motion below) */
+  scroll-behavior: smooth;
+  /* Better text rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  /* Fluid base font size */
+  font-size: var(--text-base);
+  /* Better line wrapping */
+  text-wrap: pretty;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* High contrast support */
+@media (prefers-contrast: more) {
+  :root {
+    --outline-width: 3px;
+  }
+
+  :focus-visible {
+    outline: var(--outline-width, 2px) solid currentColor;
+    outline-offset: 2px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   3. CONTAINER QUERIES - Component-level Adaptivity
+   -------------------------------------------------------------------------- */
+
+/* Gallery container query context */
+.projects-scroll-container {
+  container-type: inline-size;
+  container-name: gallery;
+}
+
+/* Project section adapts based on available space */
+@container gallery (min-width: 1400px) {
+  .project-section {
+    /* Desktop: horizontal layout */
+    flex-direction: row;
+    gap: var(--space-6);
+  }
+}
+
+@container gallery (max-width: 1399px) {
+  .project-section {
+    /* Mobile: vertical stack */
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-4);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   4. FLUID LAYOUTS - Grid/Flex Patterns
+   -------------------------------------------------------------------------- */
+
+/* Gallery: intrinsic grid with no magic numbers */
+.image-gallery {
+  display: grid;
+  /* Auto-fit pattern: creates columns as space allows */
+  grid-template-columns: repeat(auto-fit, minmax(var(--gallery-min), 1fr));
+  gap: var(--space-5);
+  /* Fluid padding with safe-area */
+  padding-inline: max(var(--space-5), var(--safe-area-left), var(--safe-area-right));
+  padding-block: var(--space-4);
+  /* Prevent overflow */
+  max-inline-size: 100%;
+}
+
+/* Gallery items with aspect ratio preservation */
+.gallery-item {
+  /* Intrinsic sizing */
+  inline-size: 100%;
+  block-size: auto;
+  /* Maintain aspect ratio */
+  aspect-ratio: auto;
+  position: relative;
+}
+
+.gallery-item img,
+.gallery-item video {
+  /* Responsive images */
+  inline-size: 100%;
+  block-size: auto;
+  /* Preserve aspect ratio */
+  object-fit: contain;
+  /* Better scaling on high-DPI */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* Project description: fluid positioning */
+.project-description {
+  /* Use logical properties */
+  max-inline-size: min(500px, 90vw);
+  padding-inline: var(--space-4);
+  padding-block: var(--space-3);
+  /* Prevent text from being too wide */
+  line-height: 1.6;
+  /* Better line length */
+  text-wrap: balance;
+}
+
+/* --------------------------------------------------------------------------
+   5. NAVIGATION - Touch-friendly & Accessible
+   -------------------------------------------------------------------------- */
+
+.nav-item {
+  /* Fluid typography */
+  font-size: var(--text-lg);
+  /* Ensure touch target size */
+  min-block-size: var(--tap-target-min);
+  min-inline-size: var(--tap-target-min);
+  /* Center content */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* Accessible padding */
+  padding: var(--space-2) var(--space-3);
+}
+
+.nav-item.active {
+  font-size: var(--text-nav-active);
+}
+
+/* Project menu: adaptive positioning */
+.project-menu {
+  /* Fluid padding with safe area */
+  padding-inline: max(var(--space-4), var(--safe-area-left), var(--safe-area-right));
+  padding-block: var(--space-4);
+  /* Ensure above safe area on bottom */
+  padding-block-end: max(var(--space-4), var(--safe-area-bottom));
+}
+
+.project-item {
+  /* Touch target */
+  min-block-size: var(--tap-target-min);
+  padding: var(--space-2) var(--space-3);
+}
+
+/* --------------------------------------------------------------------------
+   6. VIEWPORT-BASED MEDIA QUERIES (Content-driven, not device)
+   -------------------------------------------------------------------------- */
+
+/* Small viewports: optimize for readability */
+@media (max-width: 640px) {
+  .image-gallery {
+    /* Single column on very narrow screens */
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  .project-menu {
+    /* Ensure menu doesn't overlap content */
+    position: fixed;
+    inset-block-end: 0;
+    inset-inline: 0;
+    z-index: 100;
+  }
+}
+
+/* Short viewports: compress vertical spacing */
+@media (max-height: 600px) {
+  :root {
+    --space-6: clamp(1rem, 2vw, 2rem);
+    --space-8: clamp(2rem, 3vw, 3rem);
+  }
+
+  .page-container {
+    margin-block-start: var(--space-6);
+  }
+}
+
+/* Extra wide viewports: cap max width */
+@media (min-width: 2560px) {
+  .page-container,
+  .projects-scroll-container {
+    max-inline-size: var(--container-max);
+    margin-inline: auto;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   7. FOCUS STATES & ACCESSIBILITY
+   -------------------------------------------------------------------------- */
+
+:where(:focus-visible) {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+  /* Smooth outline appearance */
+  transition: outline-offset 0.2s ease;
+}
+
+:where(a, button, [role="button"]) {
+  /* Minimum touch target */
+  min-block-size: var(--tap-target-min);
+  min-inline-size: var(--tap-target-min);
+}
+
+/* --------------------------------------------------------------------------
+   8. PROGRESSIVE ENHANCEMENT - Fallbacks
+   -------------------------------------------------------------------------- */
+
+/* Container query fallback */
+@supports not (container-type: inline-size) {
+  @media (min-width: 1400px) {
+    .project-section {
+      flex-direction: row;
+      gap: var(--space-6);
+    }
+  }
+
+  @media (max-width: 1399px) {
+    .project-section {
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-4);
+    }
+  }
+}
+
+/* Clamp fallback for older browsers */
+@supports not (font-size: clamp(1rem, 2vw, 2rem)) {
+  :root {
+    --text-base: 1rem;
+    --text-lg: 1.25rem;
+    --text-xl: 2rem;
+    --text-nav-active: 8rem;
+  }
+
+  @media (min-width: 768px) {
+    :root {
+      --text-base: 1.125rem;
+      --text-lg: 1.5rem;
+    }
+  }
+}
+
+/* --------------------------------------------------------------------------
+   9. DARK MODE SUPPORT (if applicable)
+   -------------------------------------------------------------------------- */
+
+@media (prefers-color-scheme: dark) {
+  /* Can be added if needed */
+  /* Example: body { background: #000; color: #fff; } */
+}
+
+/* --------------------------------------------------------------------------
+   10. RTL SUPPORT
+   -------------------------------------------------------------------------- */
+
+[dir="rtl"] {
+  /* Logical properties handle most RTL automatically */
+  /* Add specific overrides if needed */
+}

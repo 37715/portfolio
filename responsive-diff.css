@@ -1,0 +1,299 @@
+/* ==========================================================================
+   RESPONSIVE IMPROVEMENTS - PASTE THESE INTO style.css
+   These additions make the existing design fluid & accessible
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   ADD TO TOP OF FILE - Fluid Design Tokens
+   Why: Creates scalable spacing/typography that works at all sizes
+   -------------------------------------------------------------------------- */
+
+:root {
+  /* Fluid typography - scales smoothly without breakpoints */
+  --text-fluid-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
+  --text-fluid-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+  --text-fluid-lg: clamp(1.125rem, 1rem + 0.625vw, 1.5rem);
+  --text-fluid-nav: clamp(3rem, 2rem + 5vw, 12rem);
+
+  /* Fluid spacing - prevents layout jumps */
+  --space-fluid-sm: clamp(0.5rem, 0.4rem + 0.5vw, 1rem);
+  --space-fluid-md: clamp(1rem, 0.75rem + 1.25vw, 2rem);
+  --space-fluid-lg: clamp(1.5rem, 1rem + 2vw, 3rem);
+  --space-fluid-xl: clamp(2rem, 1.5rem + 2.5vw, 4rem);
+
+  /* Safe area for notched devices */
+  --safe-bottom: max(2rem, env(safe-area-inset-bottom));
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+}
+
+/* --------------------------------------------------------------------------
+   UPDATE EXISTING .nav-item.active
+   Why: Fluid scaling prevents layout breaks at awkward widths
+   -------------------------------------------------------------------------- */
+
+.nav-item.active {
+    font-size: var(--text-fluid-nav); /* Was: 12rem - now scales 3rem→12rem */
+    line-height: 0.85;
+    letter-spacing: -0.03em;
+}
+
+/* --------------------------------------------------------------------------
+   UPDATE EXISTING .project-menu (mobile breakpoint)
+   Why: Safe-area ensures menu doesn't hide behind iPhone notch/home bar
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 1399px) {
+    .project-menu {
+        position: fixed;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        padding-bottom: var(--safe-bottom); /* Was: 1.5rem */
+    }
+}
+
+/* --------------------------------------------------------------------------
+   UPDATE EXISTING .image-gallery (mobile breakpoint)
+   Why: Prevents images from being too small on narrow screens
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 1399px) {
+    .gallery-item:nth-child(1),
+    .gallery-item:nth-child(2),
+    .gallery-item:nth-child(3),
+    .gallery-item:nth-child(4),
+    .gallery-item:nth-child(5),
+    .gallery-item:nth-child(6) {
+        width: 100% !important;
+        max-width: min(450px, 90vw); /* Was: 450px - now adapts to viewport */
+    }
+}
+
+/* --------------------------------------------------------------------------
+   UPDATE EXISTING .project-description (mobile breakpoint)
+   Why: Prevents text from being too wide or touching edges
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 1399px) {
+    .project-description {
+        position: relative;
+        width: 100%;
+        max-width: min(450px, 90vw); /* Fluid constraint */
+        right: auto;
+        top: auto;
+        margin: var(--space-fluid-md) auto 0; /* Fluid spacing */
+    }
+}
+
+/* --------------------------------------------------------------------------
+   ADD NEW - Better image handling
+   Why: Prevents layout shift and ensures crisp rendering
+   -------------------------------------------------------------------------- */
+
+.gallery-item img,
+.gallery-item video {
+    width: 100%;
+    height: auto;
+    display: block;
+    /* Preserve aspect ratio */
+    aspect-ratio: attr(width) / attr(height);
+    /* Better rendering on high-DPI */
+    image-rendering: -webkit-optimize-contrast;
+}
+
+/* --------------------------------------------------------------------------
+   ADD NEW - Touch target enforcement
+   Why: Accessibility requirement (WCAG 2.5.5)
+   -------------------------------------------------------------------------- */
+
+.nav-item,
+.project-item,
+.visit-site-btn {
+    min-height: 44px; /* Minimum touch target */
+    min-width: 44px;
+}
+
+/* --------------------------------------------------------------------------
+   ADD NEW - Focus states for accessibility
+   Why: Keyboard users need visible focus indicators
+   -------------------------------------------------------------------------- */
+
+:where(a, button, [role="button"]):focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 4px;
+    /* Smooth focus appearance */
+    transition: outline-offset 0.2s ease;
+}
+
+/* --------------------------------------------------------------------------
+   ADD NEW - Reduced motion support
+   Why: Respects user preference for reduced motion (WCAG 2.3.3)
+   -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   ADD NEW - Overflow protection
+   Why: Prevents horizontal scroll from long text
+   -------------------------------------------------------------------------- */
+
+body {
+    overflow-x: hidden;
+    /* Better text wrapping */
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+/* --------------------------------------------------------------------------
+   UPDATE EXISTING @media (max-width: 1399px) - Project section spacing
+   Why: Better vertical rhythm on mobile
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 1399px) {
+    .project-section {
+        padding: var(--space-fluid-md) 0; /* Fluid spacing */
+        padding-top: clamp(6rem, 10vh, 8rem); /* Responsive top spacing */
+        gap: var(--space-fluid-lg); /* Fluid gap between items */
+    }
+}
+
+/* --------------------------------------------------------------------------
+   ADD NEW - Gallery spacing improvements
+   Why: Consistent gaps at all sizes
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 1399px) {
+    .image-gallery {
+        gap: var(--space-fluid-md); /* Was: 2rem - now scales */
+        padding: 0 var(--space-fluid-md);
+    }
+}
+
+/* --------------------------------------------------------------------------
+   ADD NEW - Menu item spacing
+   Why: Ensures items don't feel cramped on any device
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 1399px) {
+    .project-item span {
+        font-size: clamp(0.75rem, 0.7rem + 0.25vw, 0.85rem); /* Fluid sizing */
+    }
+
+    .project-menu {
+        padding: var(--space-fluid-md); /* Fluid padding */
+    }
+}
+
+/* --------------------------------------------------------------------------
+   ADD NEW - Short viewport optimization
+   Why: Prevents content from being cut off on landscape mobile
+   -------------------------------------------------------------------------- */
+
+@media (max-height: 600px) {
+    .page-container {
+        margin-top: clamp(8rem, 15vh, 12rem); /* Compressed top margin */
+    }
+
+    .project-section {
+        padding-top: 6rem; /* Reduced top padding */
+    }
+}
+
+/* --------------------------------------------------------------------------
+   ADD NEW - Ultra-wide viewport constraint
+   Why: Prevents excessive line lengths and maintains design intent
+   -------------------------------------------------------------------------- */
+
+@media (min-width: 2560px) {
+    .page-container,
+    .projects-scroll-container {
+        max-width: 1920px;
+        margin-inline: auto; /* Center content */
+    }
+}
+
+/* --------------------------------------------------------------------------
+   ADD NEW - Smooth font scaling
+   Why: Prevents sudden jumps in text size
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 1399px) {
+    .about-content .about-name {
+        font-size: clamp(1rem, 0.9rem + 0.5vw, 1.2rem); /* Was: 1rem fixed */
+    }
+
+    .about-content .bio-text {
+        font-size: clamp(0.9rem, 0.85rem + 0.25vw, 1rem); /* Was: 0.9rem fixed */
+    }
+
+    .contact-content .contact-email {
+        font-size: clamp(0.9rem, 0.85rem + 0.25vw, 1rem); /* Was: 0.9rem fixed */
+    }
+}
+
+/* --------------------------------------------------------------------------
+   ADD NEW - Container query support (progressive enhancement)
+   Why: Component adapts based on its own width, not just viewport
+   -------------------------------------------------------------------------- */
+
+@supports (container-type: inline-size) {
+    .projects-scroll-container {
+        container-type: inline-size;
+        container-name: gallery;
+    }
+
+    @container gallery (max-width: 1399px) {
+        .project-section {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+}
+
+/* --------------------------------------------------------------------------
+   ADD NEW - Better nav spacing
+   Why: Fluid gaps prevent nav items from overlapping
+   -------------------------------------------------------------------------- */
+
+.nav-links {
+    gap: clamp(0.5rem, 0.5rem + 0.5vw, 1rem); /* Was: 1rem fixed */
+}
+
+/* --------------------------------------------------------------------------
+   ADD NEW - Scroll indicator responsiveness
+   Why: Less intrusive on mobile
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 1399px) {
+    .scroll-indicator {
+        width: 4px; /* Was: 8px - thinner on mobile */
+    }
+}
+
+/* ==========================================================================
+   IMPLEMENTATION NOTES:
+
+   1. Paste this entire block at the END of your style.css file
+   2. It will override existing styles where needed
+   3. All changes are backwards-compatible
+   4. Uses progressive enhancement (features degrade gracefully)
+   5. Safe-area variables work on modern iOS devices, fallback to fixed values
+   6. Container queries have @supports check, falls back to media queries
+
+   TEST PRIORITIES:
+   - iPhone SE (375px width)
+   - iPad (768px, 1024px)
+   - Desktop (1920px)
+   - Ultra-wide (2560px+)
+   - Landscape mobile (height <600px)
+   ========================================================================== */

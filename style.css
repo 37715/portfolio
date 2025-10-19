@@ -192,7 +192,16 @@ body.no-scroll .page-container {
 }
 
 /* Slide animations for FX grid */
-.page.slide-out-right .fx-image-item {
+.page.slide-out-right .fx-image-item.active {
+    animation: slideOutDown 0.5s ease forwards;
+}
+
+.page.slide-out-right .fx-image-item:not(.active) {
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+.page.slide-out-right .fx-arrow {
     animation: slideOutDown 0.5s ease forwards;
 }
 
@@ -348,7 +357,17 @@ body.no-scroll .page-container {
     animation-delay: 1.1s;
 }
 
-.page.slide-in-from-right .fx-image-item {
+.page.slide-in-from-right .fx-image-item.active {
+    animation: slideInFromBottom 0.5s ease both;
+    animation-delay: 1.1s;
+}
+
+.page.slide-in-from-right .fx-image-item:not(.active) {
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+.page.slide-in-from-right .fx-arrow {
     animation: slideInFromBottom 0.5s ease both;
     animation-delay: 1.1s;
 }

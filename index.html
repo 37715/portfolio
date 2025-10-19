@@ -8,6 +8,14 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="loader.css">
     <link rel="stylesheet" href="fx-scroll.css">
+    <script>
+        // Immediate scroll reset - runs before anything else
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        window.scrollTo(0, 0);
+        document.documentElement.scrollTop = 0;
+    </script>
 </head>
 <body>
     <div class="scroll-indicator"></div>
@@ -98,90 +106,110 @@
 
                     <!-- Retrocycles -->
                     <section class="fx-image-section" data-index="0">
-                        <div class="fx-images-grid">
-                            <div class="fx-image-item">
-                                <video autoplay loop muted playsinline>
-                                    <source src="assets/site images/retrocycles/retrocycles video demo 1920x900.mp4" type="video/mp4">
-                                </video>
+                        <div class="fx-slideshow-container">
+                            <button class="fx-arrow fx-arrow-left" aria-label="Previous image">‹</button>
+                            <div class="fx-images-grid">
+                                <div class="fx-image-item active">
+                                    <video autoplay loop muted playsinline>
+                                        <source src="assets/site images/retrocycles/retrocycles video demo 1920x900.mp4" type="video/mp4">
+                                    </video>
+                                </div>
+                                <div class="fx-image-item">
+                                    <img src="assets/site images/retrocycles/2 - main menu MOBILE.png" alt="Retrocycles Mobile">
+                                </div>
+                                <div class="fx-image-item">
+                                    <img src="assets/site images/retrocycles/4 - leaderboard DESKTOP.png" alt="Retrocycles Desktop">
+                                </div>
                             </div>
-                            <div class="fx-image-item">
-                                <img src="assets/site images/retrocycles/2 - main menu MOBILE.png" alt="Retrocycles Mobile">
-                            </div>
-                            <div class="fx-image-item">
-                                <img src="assets/site images/retrocycles/4 - leaderboard DESKTOP.png" alt="Retrocycles Desktop">
-                            </div>
+                            <button class="fx-arrow fx-arrow-right" aria-label="Next image">›</button>
                         </div>
                         <p class="fx-description">a community archive / hub for the game retrocycles, featuring leaderboards, tutorials, and a gallery</p>
                     </section>
 
                     <!-- Typrr -->
                     <section class="fx-image-section" data-index="1">
-                        <div class="fx-images-grid">
-                            <div class="fx-image-item">
-                                <video autoplay loop muted playsinline>
-                                    <source src="assets/site images/typrr/video 1 (put this on the left side).mp4" type="video/mp4">
-                                </video>
+                        <div class="fx-slideshow-container">
+                            <button class="fx-arrow fx-arrow-left" aria-label="Previous image">‹</button>
+                            <div class="fx-images-grid">
+                                <div class="fx-image-item active">
+                                    <video autoplay loop muted playsinline>
+                                        <source src="assets/site images/typrr/video 1 (put this on the left side).mp4" type="video/mp4">
+                                    </video>
+                                </div>
+                                <div class="fx-image-item">
+                                    <img src="assets/site images/typrr/2 - mobile daily.png" alt="Typrr Mobile">
+                                </div>
+                                <div class="fx-image-item">
+                                    <img src="assets/site images/typrr/1 - desktop image daily.png" alt="Typrr Desktop">
+                                </div>
                             </div>
-                            <div class="fx-image-item">
-                                <img src="assets/site images/typrr/2 - mobile daily.png" alt="Typrr Mobile">
-                            </div>
-                            <div class="fx-image-item">
-                                <img src="assets/site images/typrr/1 - desktop image daily.png" alt="Typrr Desktop">
-                            </div>
+                            <button class="fx-arrow fx-arrow-right" aria-label="Next image">›</button>
                         </div>
                         <p class="fx-description">a competitive typing platform built around speed and precision for developers and code enthusiasts</p>
                     </section>
 
                     <!-- Cleverlink -->
                     <section class="fx-image-section" data-index="2">
-                        <div class="fx-images-grid">
-                            <div class="fx-image-item">
-                                <video autoplay loop muted playsinline>
-                                    <source src="assets/site images/cleverlink/ai robot video 1920x900.mp4" type="video/mp4">
-                                </video>
+                        <div class="fx-slideshow-container">
+                            <button class="fx-arrow fx-arrow-left" aria-label="Previous image">‹</button>
+                            <div class="fx-images-grid">
+                                <div class="fx-image-item active">
+                                    <video autoplay loop muted playsinline>
+                                        <source src="assets/site images/cleverlink/ai robot video 1920x900.mp4" type="video/mp4">
+                                    </video>
+                                </div>
+                                <div class="fx-image-item">
+                                    <img src="assets/site images/cleverlink/3 - MOBILE solutions.png" alt="Cleverlink Mobile">
+                                </div>
+                                <div class="fx-image-item">
+                                    <img src="assets/site images/cleverlink/2 - benefits page.png" alt="Cleverlink Desktop">
+                                </div>
                             </div>
-                            <div class="fx-image-item">
-                                <img src="assets/site images/cleverlink/3 - MOBILE solutions.png" alt="Cleverlink Mobile">
-                            </div>
-                            <div class="fx-image-item">
-                                <img src="assets/site images/cleverlink/2 - benefits page.png" alt="Cleverlink Desktop">
-                            </div>
+                            <button class="fx-arrow fx-arrow-right" aria-label="Next image">›</button>
                         </div>
                         <p class="fx-description">an ai driven automation agency helping small businesses to modernize</p>
                     </section>
 
                     <!-- Cathexis -->
                     <section class="fx-image-section" data-index="3">
-                        <div class="fx-images-grid">
-                            <div class="fx-image-item">
-                                <video autoplay loop muted playsinline>
-                                    <source src="assets/site images/cathexis/gameplay video.mp4" type="video/mp4">
-                                </video>
+                        <div class="fx-slideshow-container">
+                            <button class="fx-arrow fx-arrow-left" aria-label="Previous image">‹</button>
+                            <div class="fx-images-grid">
+                                <div class="fx-image-item active">
+                                    <video autoplay loop muted playsinline>
+                                        <source src="assets/site images/cathexis/gameplay video.mp4" type="video/mp4">
+                                    </video>
+                                </div>
+                                <div class="fx-image-item">
+                                    <video autoplay loop muted playsinline>
+                                        <source src="assets/site images/cathexis/bike picker.mp4" type="video/mp4">
+                                    </video>
+                                </div>
+                                <div class="fx-image-item">
+                                    <img src="assets/site images/cathexis/main menu.png" alt="Cathexis Menu">
+                                </div>
                             </div>
-                            <div class="fx-image-item">
-                                <video autoplay loop muted playsinline>
-                                    <source src="assets/site images/cathexis/bike picker.mp4" type="video/mp4">
-                                </video>
-                            </div>
-                            <div class="fx-image-item">
-                                <img src="assets/site images/cathexis/main menu.png" alt="Cathexis Menu">
-                            </div>
+                            <button class="fx-arrow fx-arrow-right" aria-label="Next image">›</button>
                         </div>
                         <p class="fx-description">a 3d tron-inspired lightcycle game exploring skill-based mechanics utilising webGL and threejs</p>
                     </section>
 
                     <!-- Gardenescapes -->
                     <section class="fx-image-section" data-index="4">
-                        <div class="fx-images-grid">
-                            <div class="fx-image-item">
-                                <img src="assets/site images/gardenescapes/landing page.png" alt="Gardenescapes Landing">
+                        <div class="fx-slideshow-container">
+                            <button class="fx-arrow fx-arrow-left" aria-label="Previous image">‹</button>
+                            <div class="fx-images-grid">
+                                <div class="fx-image-item active">
+                                    <img src="assets/site images/gardenescapes/landing page.png" alt="Gardenescapes Landing">
+                                </div>
+                                <div class="fx-image-item">
+                                    <img src="assets/site images/gardenescapes/services page.png" alt="Gardenescapes Services">
+                                </div>
+                                <div class="fx-image-item">
+                                    <img src="assets/site images/gardenescapes/portfolio page.png" alt="Gardenescapes Portfolio">
+                                </div>
                             </div>
-                            <div class="fx-image-item">
-                                <img src="assets/site images/gardenescapes/services page.png" alt="Gardenescapes Services">
-                            </div>
-                            <div class="fx-image-item">
-                                <img src="assets/site images/gardenescapes/portfolio page.png" alt="Gardenescapes Portfolio">
-                            </div>
+                            <button class="fx-arrow fx-arrow-right" aria-label="Next image">›</button>
                         </div>
                         <p class="fx-description">a local landscaping and maintenance brand, digitized through modern web presence</p>
                     </section>
@@ -237,5 +265,6 @@
     <script src="scroll-indicator.js"></script>
     <script src="gsap-scroll.js"></script>
     <script src="scroll-snap.js"></script>
+    <script src="slideshow.js"></script>
 </body>
 </html>

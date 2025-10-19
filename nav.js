@@ -154,16 +154,33 @@ if (currentPage === 'about') {
 
 // Scroll to top on page load - force it immediately and on load
 window.scrollTo(0, 0);
+document.documentElement.scrollTop = 0;
+document.body.scrollTop = 0;
 
 window.addEventListener('DOMContentLoaded', () => {
     window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
 });
 
 window.addEventListener('load', () => {
     window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
 });
 
 // Also catch page show event (for back/forward navigation)
-window.addEventListener('pageshow', () => {
+window.addEventListener('pageshow', (event) => {
     window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+
+    // If the page was restored from cache, force scroll to top
+    if (event.persisted) {
+        setTimeout(() => {
+            window.scrollTo(0, 0);
+            document.documentElement.scrollTop = 0;
+            document.body.scrollTop = 0;
+        }, 0);
+    }
 });
